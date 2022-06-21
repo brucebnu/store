@@ -1,0 +1,17 @@
+{
+    "name": "brucebnu/store",
+    "description": "跨境电商平台SDK集成",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Brucebnu\\Store\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "BruceNiu",
+            "email": "bruce_bnu@126.com"
+        }
+    ],
+    "require": {}
+}
