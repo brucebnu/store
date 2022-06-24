@@ -1,5 +1,5 @@
 <?php
-namespace brucebnu\shop\lazada;
+namespace brucebnu\store\lazada;
 
 class LazopClient
 {
@@ -28,8 +28,8 @@ class LazopClient
 	{
 		$length = strlen($url);
 	    if($length == 0)
-	    {    
-			throw new Exception("url is empty",0);
+	    {
+            throw new \Exception("url is empty",0);
 		}
 		$this->gatewayUrl = $url;
 		$this->appkey = $appkey;
@@ -117,7 +117,7 @@ class LazopClient
 			curl_close($ch);
 			if (200 !== $httpStatusCode)
 			{
-				throw new Exception($reponse,$httpStatusCode);
+				throw new \Exception($reponse,$httpStatusCode);
 			}
 		}
 
@@ -199,13 +199,15 @@ class LazopClient
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
 		$response = curl_exec($ch);
-		unset($data);
-		
 		$errno = curl_errno($ch);
+        // dd($url, $postFields, $fileFields,$headerFields, $errno, $response);
+
+        unset($data);
 		if ($errno)
 		{
 			curl_close($ch);
-			throw new Exception($errno,0);
+
+			throw new \Exception($errno,0);
 		}
 		else
 		{
@@ -213,7 +215,7 @@ class LazopClient
 			curl_close($ch);
 			if (200 !== $httpStatusCode)
 			{
-				throw new Exception($response,$httpStatusCode);
+				throw new \Exception($response,$httpStatusCode);
 			}
 		}
 

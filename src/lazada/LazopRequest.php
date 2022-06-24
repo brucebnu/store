@@ -1,5 +1,5 @@
 <?php
-namespace brucebnu\shop\lazada;
+namespace brucebnu\store\lazada;
 
 class LazopRequest
 {
