@@ -252,7 +252,7 @@ class LazopClient
 		}
 
 		$sysParams["sign"] = $this->generateSign($request->apiName,array_merge($apiParams, $sysParams));
-
+        // dd($request->apiName,array_merge($apiParams, $sysParams), $sysParams["sign"]);
 		foreach ($sysParams as $sysParamKey => $sysParamValue)
 		{
 			$requestUrl .= "$sysParamKey=" . urlencode($sysParamValue) . "&";

@@ -13,5 +13,7 @@
             "email": "bruce_bnu@126.com"
         }
     ],
-    "require": {}
+    "require": {
+        "minchao/shopee-php": "^0.2.2"
+    }
 }
