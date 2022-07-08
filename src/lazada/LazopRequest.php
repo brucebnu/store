@@ -7,11 +7,11 @@ class LazopRequest
 
 	public $headerParams = array();
 
-	public $udfParams = array();
+	public $udfParams   = array();
 
-	public $fileParams = array();
+	public $fileParams  = array();
 
-	public $httpMethod = 'POST';
+	public $httpMethod  = 'POST';
 
 	public function __construct($apiName,$httpMethod = 'POST')
 	{
@@ -23,7 +23,6 @@ class LazopRequest
 			throw new Exception("api name is invalid. It should be start with /");			
 		}
 	}
-
 
 	function addApiParam($key,$value)
 	{
@@ -77,5 +76,3 @@ class LazopRequest
 	    return strpos($str, $needle) === 0;
 	}
 }
-
-?>

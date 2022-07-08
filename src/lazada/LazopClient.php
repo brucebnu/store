@@ -24,7 +24,7 @@ class LazopClient
 		return $this->appkey;
 	}
 
-	public function __construct($url = "",$appkey = "",$secretKey = "")
+	public function __construct($url = "", $appkey = "",$secretKey = "")
 	{
 		$length = strlen($url);
 	    if($length == 0)
@@ -109,7 +109,7 @@ class LazopClient
 		if ($errno)
 		{
 			curl_close($ch);
-			throw new Exception($errno,0);
+			throw new \Exception($errno,0);
 		}
 		else
 		{
@@ -224,9 +224,9 @@ class LazopClient
 
 	public function execute(LazopRequest $request, $accessToken = null)
 	{
-		$sysParams["app_key"] = $this->appkey;
-		$sysParams["sign_method"] = $this->signMethod;
-		$sysParams["timestamp"] = $this->msectime();
+		$sysParams["app_key"]       = $this->appkey;
+		$sysParams["sign_method"]   = $this->signMethod;
+		$sysParams["timestamp"]     = $this->msectime();
 		if (null != $accessToken)
 		{
 			$sysParams["access_token"] = $accessToken;
