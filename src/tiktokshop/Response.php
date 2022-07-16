@@ -29,9 +29,9 @@ class Response
         return $this->body()->getContents();
     }
 
-    public function object()
+    public function object($is_array=false)
     {
-        return json_decode($this->contents());
+        return json_decode($this->contents(), $is_array);
     }
 
     public function json()

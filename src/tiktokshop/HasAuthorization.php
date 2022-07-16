@@ -49,7 +49,7 @@ trait HasAuthorization
         return json_decode($response->getBody()->getContents(), $is_array);
     }
 
-    public function refreshAccessToken(string $refreshToken)
+    public function refreshAccessToken(string $refreshToken, $is_array = false)
     {
         $client = new GuzzleClient(['base_uri' => $this->authHost]);
 
@@ -62,6 +62,6 @@ trait HasAuthorization
             ],
         ]);
 
-        return json_decode($response->getBody()->getContents(), $is_array = false);
+        return json_decode($response->getBody()->getContents(), $is_array);
     }
 }

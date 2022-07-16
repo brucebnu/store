@@ -16,7 +16,7 @@ trait HttpNode
         return new GuzzleClient(['base_uri' => $this->client->apiHost]);
     }
 
-    protected function get($uri, array $params = [])
+    protected function get($uri, array $params = [], $is_array=false)
     {
         $response = $this->getClient()->request('GET', $this->getPath($uri), [
             RequestOptions::QUERY => $this->getParameters($uri, $params),
@@ -24,10 +24,10 @@ trait HttpNode
 
         $response = new Response($response, $params);
 
-        return $response->object();
+        return $response->object($is_array);
     }
 
-    protected function post($uri, array $params = [])
+    protected function post($uri, array $params = [], $is_array=false)
     {
         $response = $this->getClient()->request('POST', $this->getPath($uri), [
             RequestOptions::QUERY => $this->getParameters($uri),
@@ -36,7 +36,7 @@ trait HttpNode
 
         $response = new Response($response, $params);
 
-        return $response->object();
+        return $response->object($is_array);
     }
 
     protected function put($uri, array $params = [])
