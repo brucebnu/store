@@ -25,6 +25,7 @@ class TiktokShopClient
         {
             throw new Exception("url is empty",0);
         }
+        // dd($url, $appkey, $secretKey );
         $this->gatewayUrl   = $url;
         $this->appkey       = $appkey;
         $this->secretKey    = $secretKey;
@@ -106,9 +107,14 @@ class TiktokShopClient
 
         try
         {
+            $request->params['sysParams'] = $sysParams;
+            $request->params['requestUrl'] = $requestUrl;
+            $request->params['postFields'] = $apiParams;
+            $request->params['headerParams'] = $request->headerParams;
             if($request->httpMethod == 'POST')
             {
-                $resp = $this->curl_post($requestUrl, $apiParams, $request->fileParams,$request->headerParams);
+                $request->params['fileParams'] = $request->fileParams;
+                $resp = $this->curl_post($requestUrl, $apiParams, $request->fileParams, $request->headerParams);
             }
             else
             {
@@ -307,6 +313,7 @@ class TiktokShopClient
     {
         $localIp = isset($_SERVER["SERVER_ADDR"]) ? $_SERVER["SERVER_ADDR"] : "CLI";
         $logger = new Logger;
+        // dd(TIKTOK_SDK_WORK_DIR);
         $logger->conf["log_file"] = rtrim(TIKTOK_SDK_WORK_DIR, '\\/') . '/' . "logs/lazopsdk.log." . date("Y-m-d");
         $logger->conf["separator"] = "^_^";
         $logData = array(

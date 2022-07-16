@@ -12,6 +12,8 @@ class TiktokShopRequest
 
     public $fileParams  = array();
 
+    public $params = [];
+
     public $httpMethod  = 'POST';
 
     public function __construct($apiName,$httpMethod = 'POST')
