@@ -21,13 +21,13 @@ class Order extends Node
      * @param array $params
      * @return mixed
      */
-    public function getOrderList(array $params = [])
+    public function getOrderList(array $params = [], $is_array = false)
     {
         if (!isset($params['page_size'])) {
             $params['page_size'] = 25;
         }
 
-        return $this->post('/search', $params);
+        return $this->post('/search', $params, $is_array);
     }
 
     /**
@@ -36,8 +36,8 @@ class Order extends Node
      * @param array<string> $orderIds
      * @return mixed
      */
-    public function getOrderDetails(array $orderIds = []): mixed
+    public function getOrderDetails(array $orderIds = [], $is_array = false)
     {
-        return $this->post('/detail/query', ['order_id_list' => $orderIds]);
+        return $this->post('/detail/query', ['order_id_list' => $orderIds], $is_array);
     }
 }

@@ -29,6 +29,7 @@ trait HttpNode
 
     protected function post($uri, array $params = [], $is_array=false)
     {
+        // dd($params);
         $response = $this->getClient()->request('POST', $this->getPath($uri), [
             RequestOptions::QUERY => $this->getParameters($uri),
             RequestOptions::JSON => $params,

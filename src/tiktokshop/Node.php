@@ -15,4 +15,8 @@ abstract class Node
     {
         $this->client = $client;
     }
+
+    public function executeGet($path, $params, $is_array = false){
+        return $this->get($path, $params, $is_array);
+    }
 }
